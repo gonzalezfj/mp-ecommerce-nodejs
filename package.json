@@ -1,12 +1,14 @@
 {
   "name": "mp-ecommerce-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "mp ecommerce example",
+  "repository": "https://github.com/gonzalezfj/mp-ecommerce-nodejs",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Facundo J Gonzalez",
   "license": "ISC",
   "dependencies": {
     "express": "4.17.1",

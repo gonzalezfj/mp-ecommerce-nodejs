@@ -28,13 +28,15 @@ app.get('/failure', function (req, res) {
 
 
 app.get('/webhook', function (req, res) {
-    console.log(JSON.stringify(res.query));
+    console.log(JSON.stringify({query: res.query}));
+    console.log(JSON.stringify({body: res.body}));
     res.status(200).json({});
 });
 
 app.get('/success', function (req, res) {
     console.log('success');
-    console.log(JSON.stringify(res.query));
+    console.log(JSON.stringify({query: res.query}));
+    console.log(JSON.stringify({body: res.body}));
     res.render('success', {
         ...res.query,
     });

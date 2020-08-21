@@ -55,9 +55,9 @@ app.get('/detail', function (req, res) {
                 title: req.query.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
                 currency_id: "ARS",
-                quantity: +req.query.unit,
-                unit_price: +req.query.price,
-                picture_url: req.query.img,
+                quantity: req.query.unit,
+                unit_price: req.query.price,
+                picture_url: getUrl(req.query.img.substring(2)),
             },
         ],
         payer: {

@@ -1,9 +1,14 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var mercadopago = require ('mercadopago');
+var bodyParser = require('body-parser');
  
 var app = express();
-app.use(express.bodyParser());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 mercadopago.configure({
     access_token: 'APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398',

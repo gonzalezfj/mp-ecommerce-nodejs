@@ -28,14 +28,14 @@ app.get('/failure', function (req, res) {
 
 
 app.get('/webhook', function (req, res) {
-    console.log(res.query);
+    console.log(JSON.stringify(res.query));
     res.status(200).json({});
 });
 
 app.get('/success', function (req, res) {
     console.log('success');
-    console.log(res.query);
-    res.render('sucess', {
+    console.log(JSON.stringify(res.query));
+    res.render('success', {
         ...res.query,
     });
 });
@@ -95,16 +95,17 @@ app.get('/detail', function (req, res) {
         "notification_url": getUrl("webhook"),
         "external_reference": "facujgg@gmail.com",
     };
-    console.log(preference);
+    console.log(JSON.stringify({
+        preference: preference
+    }));
     mercadopago.preferences.create(preference)
     .then(function(response) {
-        var global_id = response.body.id;
-        console.log({
-            preferencia_de_pago: global_id,
-        });
+        console.log(JSON.stringify({
+            response_preference: response.body,
+        }));
         res.render('detail', {
             ...req.query,
-            global_id,
+            init_point: response.body.init_point,
         });
     }).catch(function(error){
         console.log(error);
